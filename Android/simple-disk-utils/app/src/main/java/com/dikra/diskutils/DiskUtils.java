@@ -42,6 +42,32 @@ public class DiskUtils {
 
     /**
      * Calculates available space on disk.
+     * @param path  Gets the disk that contains the path, queries the internal disk if this is null or empty
+     * @return Available disk space in MB.
+     */
+    public static int availableSpace(String path)
+    {
+        if (path == null || path.isEmpty()) {
+            path = Environment.getRootDirectory().getAbsolutePath();
+        }
+
+        long totalBlocks;
+        long blockSize;
+
+        StatFs statFs = new StatFs(path);
+        if (Build.VERSION.SDK_INT < 18) {
+            totalBlocks = statFs.getAvailableBlocks();
+            blockSize = statFs.getBlockSize();
+        } else {
+            totalBlocks = statFs.getAvailableBlocksLong();
+            blockSize = statFs.getBlockSizeLong();
+        }
+        BigInteger total = BigInteger.valueOf(totalBlocks).multiply(BigInteger.valueOf(blockSize)).divide(BigInteger.valueOf(MEGA_BYTE));
+
+        return total.intValue();
+    }
+    /**
+     * Calculates available space on disk.
      * @param external  Queries external disk if true, queries internal disk otherwise.
      * @return Available disk space in MB.
      */
