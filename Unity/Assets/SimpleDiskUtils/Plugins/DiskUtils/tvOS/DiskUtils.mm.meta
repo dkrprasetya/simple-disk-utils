@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f172f888ca5ba41a6addc3c333d78747
+guid: 428f081802e274819bc1fa3714156c31
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -21,8 +21,8 @@ PluginImporter:
         Exclude OSXUniversal: 1
         Exclude Win: 1
         Exclude Win64: 1
-        Exclude iOS: 0
-        Exclude tvOS: 1
+        Exclude iOS: 1
+        Exclude tvOS: 0
   - first:
       Any: 
     second:
@@ -63,7 +63,7 @@ PluginImporter:
   - first:
       iPhone: iOS
     second:
-      enabled: 1
+      enabled: 0
       settings:
         AddToEmbeddedBinaries: false
         CPU: AnyCPU
@@ -72,7 +72,7 @@ PluginImporter:
   - first:
       tvOS: tvOS
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         CompileFlags: 
